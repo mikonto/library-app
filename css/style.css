@@ -193,7 +193,7 @@ footer {
     color: #000;
 }
 
-.submit {
+#submit {
     border: 2px solid;
     box-shadow: 5px 4px #888888;
     border-radius: 8px;
@@ -203,7 +203,7 @@ footer {
     margin: 6px;
 }
 
-.submit:hover {
+#submit:hover {
     filter: brightness(90%);
 }
 
