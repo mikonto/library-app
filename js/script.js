@@ -41,8 +41,10 @@ function Book(title, author, pages, read, rating) {
   this.rating = rating;
 }
 
-// User interface
+// Interface
 const booksGrid = document.getElementById('books-grid');
+document.getElementById("add-book").addEventListener("click", function () {toggleModal("modal-container")});
+document.getElementById("submit").addEventListener("click", function () {addBookToLibrary()});
 
 const updateBooksGrid = () => {
   resetBooksGrid()
@@ -103,8 +105,6 @@ let getRatingValue = (id) => {
   if (myLibrary[id].rating === 1) {return "★ "}
 }
 
-
-
 function confirmRemove(id) {
   toggleModal("confirm-container");
 
@@ -131,11 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
   updateBooksGrid();
 });
 
-document.getElementById("add-book").addEventListener("click", function () {toggleModal("modal-container")});
-
-document.getElementById("submit").addEventListener("click", function () {addBookToLibrary()});
-
 function addBookToLibrary () {
+  isFormValid = formValidator();
+  if (isFormValid == true) {
   const title = document.forms["new-book"]["title"].value;
   const author = document.forms["new-book"]["author"].value;
   const pages = document.forms["new-book"]["pages"].value
@@ -146,10 +144,51 @@ function addBookToLibrary () {
   updateBooksGrid();
   toggleModal("modal-container");
   clearForm();
+  }
+  if (isFormValid == false) {
+    return;
+  }
+}
+
+function formValidator() {
+  let formsObj = {
+      title: document.forms["new-book"]["title"].value,
+      author: document.forms["new-book"]["author"].value,
+      pages: document.forms["new-book"]["pages"].value,
+      rating: Number(document.forms["new-book"]["rate"].value),
+  };
+
+  for (const key in formsObj) {
+    if(formsObj[key] === "" || formsObj[key] == 0) {
+      validationText = document.querySelector(`p.validation-text.${key}`)
+      validationText.classList.add("visible");
+
+      if(formsObj[key] === "") {
+        validationHighlight = document.querySelector(`#${key}`)
+        validationHighlight.classList.add("pink-bg");
+      }
+    }
+  }
+
+  if(formsObj.title == "" || formsObj.author == "" || formsObj.pages == "" || formsObj.rating == 0) {
+    return false;
+  }
+
+  else {
+    return true;
+  }
+}
+
+function clearValidator() {
+  const formsArray = ["title", "author", "pages", "rating"];
+  for (var i = 0; i < formsArray.length; i++) {
+    validationText = document.querySelector(`p.validation-text.${formsArray[i]}`)
+    validationHighlight = document.querySelector(`#${formsArray[i]}`)
+    validationText.classList.remove("visible");
+    validationHighlight.classList.remove("pink-bg");
+  };
 }
 
 function clearForm() {
   document.getElementById("modal-form").reset();
-
 }
-

@@ -52,16 +52,15 @@ h2 {
 }
 
 #books-grid {
-    margin: auto;
     display: grid;
-    /* max-width: 900px; */
     gap: 2rem;
     padding: 1rem;
-    grid-template-columns: repeat(auto-fit, 200px);
+    grid-template-columns: repeat(auto-fit, 220px);
     grid-auto-rows: minmax(250px, auto);
     justify-content: center;
 }
-  
+
+/* Book card */
 .book {
     padding: 12px 12px 18px 12px;
     display: flex;
@@ -107,6 +106,7 @@ footer {
     text-align: center;
 }
 
+/* Modal "Add new book" */
 #modal-container {
     width: 100%;
     height: 100%;
@@ -147,13 +147,16 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+}
+
+#modal-form > h2 {
+    margin-bottom: 2px;
 }
   
 .modal-read {
     display: flex;
     gap: 10px;
-    margin-top: 6px;
+    margin-top: 12px;
 } 
 
 .checkbox {
@@ -162,13 +165,19 @@ footer {
     accent-color: black;
 }
 
-.rate-container {
+#rating {
     display: flex;
     align-items: center;
+    margin-bottom: 12px;
+}
+
+#rating > p {
+    margin: 0;
 }
 
 .rate {
     margin-left: 8px;
+    margin-top: 0;
 }
 
 .rate:not(:checked) > input {
@@ -186,6 +195,7 @@ footer {
 }
 
 .rate:not(:checked) > label:before {
+    margin-top: 0px;
     content: '★ ';
 }
 
@@ -193,7 +203,7 @@ footer {
     color: #000;
 }
 
-#submit {
+#submit, #confirm-yes, #confirm-no {
     border: 2px solid;
     box-shadow: 5px 4px #888888;
     border-radius: 8px;
@@ -203,10 +213,11 @@ footer {
     margin: 6px;
 }
 
-#submit:hover {
+#submit:hover, #confirm-yes:hover, #confirm-no {
     filter: brightness(90%);
 }
 
+/* Modal "Confirm removing book" */
 #confirm-container {
     width: 100%;
     height: 100%;
@@ -229,13 +240,40 @@ footer {
     border-radius: 8px;
     transition: 0.2s ease-in-out;
     margin: 10%;
-    width: 200px;
+    width: 220px;
   }
 
-  #confirm > p {
-    text-align: center;
-  }
+#confirm > p {
+text-align: center;
+}
 
-  .hidden {
-    display:none !important;
-  }
+.visible {
+    display: block;
+}
+
+.hidden {
+display:none !important;
+}
+
+.validation-block {
+    height: 14px;
+    margin-top: 6px;
+    align-self: flex-start;
+    margin-left: 16px;
+}
+
+.validation-text {
+    margin: 0;
+    font-size: 0.8rem;
+    color: red;
+    display:none;
+}
+
+.validation-text.rating {
+    margin-top: 4px;
+}
+
+.pink-bg {
+    background-color: #FADCD2;
+
+}
