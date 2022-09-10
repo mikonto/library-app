@@ -41,10 +41,7 @@ function Book(title, author, pages, read, rating) {
   this.rating = rating;
 }
 
-// Interface
 const booksGrid = document.getElementById('books-grid');
-document.getElementById("add-book").addEventListener("click", function () {toggleModal("modal-container")});
-document.getElementById("submit").addEventListener("click", function () {addBookToLibrary()});
 
 const updateBooksGrid = () => {
   resetBooksGrid()
@@ -192,3 +189,8 @@ function clearValidator() {
 function clearForm() {
   document.getElementById("modal-form").reset();
 }
+
+document.getElementById("add-book").addEventListener("click", function () {toggleModal("modal-container")});
+
+document.getElementById("submit").addEventListener("click", function () {addBookToLibrary()});
+

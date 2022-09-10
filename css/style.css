@@ -244,15 +244,15 @@ footer {
   }
 
 #confirm > p {
-text-align: center;
+    text-align: center;
 }
 
 .visible {
-    display: block;
+    display: block !important;
 }
 
 .hidden {
-display:none !important;
+    display:none !important;
 }
 
 .validation-block {
@@ -275,5 +275,4 @@ display:none !important;
 
 .pink-bg {
     background-color: #FADCD2;
-
 }
