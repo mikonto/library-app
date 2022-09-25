@@ -33,13 +33,22 @@ let myLibrary = [
 
 ];
 
-function Book(title, author, pages, read, rating) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.rating = rating;
+class Book {
+
+  constructor(title, author, pages, read, rating) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.rating = rating; }
+
+    test() {
+      alert("test");
+    }
+
 }
+
+
 
 const booksGrid = document.getElementById('books-grid');
 
